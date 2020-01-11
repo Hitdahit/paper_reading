@@ -1,4 +1,4 @@
-# Optimally Scheduling CNN Conolutions for Efficient Memory Access
+# Optimally Scheduling CNN Convolutions for Efficient Memory Access
 
 ### I. 문제 상황
 ---

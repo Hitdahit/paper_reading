@@ -58,7 +58,25 @@ Li가 X를 캐리한 경우: FX(Li-1)
 캐리하지 않은 경우: BX(Li-1)
 
 * Tx: memory traffic. 배열X에 접근하기 위해 off-accelerator memory로 접근한 바이트 수
-TX = PX * FX(Li)*(ㅠn(Lj))  //ㅠn(Lj) = j가 i에서 N-1까지 n(Lj)를 모두 곱한값.
+TX = PX * FX(Li)*(ㅠn(Lj) 
+ //ㅠn(Lj) = j가 i에서 N-1까지 n(Lj)를 모두 곱한값.
+ TX는 Dataflow 스케줄링에만 영향을 받는다. local buffer와는 관계x (왜?)
 
   * PX: X 배열이 스토리지에서 사용한 크기를 바이트로 표현한 상수.
 i: TX의 공식에서 i는 버퍼의 최대크기보다 작은 B(Li)의 최대를 만드는 i이다.
+
+  * 그러므로 전체 Memory Traffic은 
+    T = T input + T weight + T output, acc + T output, final
+
+  즉, T를 이용하여 dataflow schedule에 대한 평가가 가능하다.
+
+* Dataflow schedule selection procedure
+  1. 각 배열의 참조마다 local buffering requirement 계산.
+  2. 1에서 계산한 requirement들을 이용하여 특정 CNN layer를 분석해서 최상의 버퍼링 레벨 조합을 찾는다. (단 CNN의 3가지 배열들이 가지는 local buffer capacities들을 고려해야.)
+
+* 이전 연구보다 뛰어난 점.
+  * footprint calculation -> data reuse에 대하여 더 잘 고려할 수 있다.
+    I, W, O 배열들에 대하여 독립적인 버퍼링을 고려할 수 있으므로.
+
+  * 3개 배열에 대해 독립적인 버퍼링을 수행하므로, 전체 memory traffic의 관점에서  memory transfer를 항상 optimal하게 수행한다고 말 할 수 있다.
+  * 

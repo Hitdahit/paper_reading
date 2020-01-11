@@ -14,4 +14,4 @@ my review file's name will be CNN_Scheduling
 ## Have to read
 * Memory-Centric Accelerator Design for Convolutional Neural Networks
 * clcNet: Improving the Efficiency of Convolutional Neural Network using Channel Local Convolutions
-*  Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks - Alec Radford el ec, 2016
+*  Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks - Alec Radford el ec, 2016(https://angrypark.github.io/generative%20models/paper%20review/DCGAN-paper-reading/)

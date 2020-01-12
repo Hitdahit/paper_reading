@@ -79,4 +79,8 @@ i: TX의 공식에서 i는 버퍼의 최대크기보다 작은 B(Li)의 최대�
     I, W, O 배열들에 대하여 독립적인 버퍼링을 고려할 수 있으므로.
 
   * 3개 배열에 대해 독립적인 버퍼링을 수행하므로, 전체 memory traffic의 관점에서  memory transfer를 항상 optimal하게 수행한다고 말 할 수 있다.
-  * 
+  * 기존 방식인 PEEMEN 방식이란???
+  
+### VI. Case Study: ASMP cluster accelerator
+---
+* ASMP: ASymmetric MultiProcessing

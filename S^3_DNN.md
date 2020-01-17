@@ -26,5 +26,5 @@
     * schedules workloads in the granularity of GPU kernels and dynamically aggregates kernels that underutilize GPU resources to enable better concurrency.
   * 1과 2의 동시 해결: 단순히 LSF를 합치거나 커널 동시성을 보는 것 외에도 novel supervised streaming and scheduling framework를 개발. -> DNN의 특이한 workload들에서 기인.
   
-* DNN-based object detection workload들 -> STAGED GPU resource utilization pattern을 보임. 즉, cost가 큰 layer를 지나고 나면 그다음 layer에서는 점진적으로 GPU resource가 감소하는 모습을 관찰할 수 있었다.
+* DNN-based object detection workload들 -> STAGED GPU resource utilization pattern을 보임. 즉, cost가 큰 layer를 지나고 나면 그다음 layer에서는 점진적으로 GPU resource가 감소하는 모습을 관찰할 수 있었다!
 

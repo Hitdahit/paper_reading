@@ -37,7 +37,7 @@ s3dnn
 1. Introduction.
 s3dnn은 multicore cpu, GPU를 가진 환경에서 사용하도록 개발됨.
 
-->s3dnn은 input video들과 GPU를 잇는 middleware로써, GPU위에서의 O.D workload execution을 chlwjrghk gka.
+->s3dnn은 input video들과 GPU를 잇는 middleware로써, GPU위에서의 O.D workload execution을 최적화 함.
 
 frontend-backend framework임.
 front: 모든 영상처리 요청들을 백엔드에게 forwarding하는 역할.
@@ -69,16 +69,16 @@ and a multicore CPU. so use CUDA as a GPU programming model.
 CUDA와 GPU 프로그래밍 모델을 사용
 
 2-i. The CUDA programming model
-GPGPU application은 아래와 같은 execution flow.
-1. init GPU device
-2. allocate device memory
-3. transferring data from host memory to device memory
-4. launching the computation work on GPU
-5.copying results back to host memory
-6. free device memory and close the device.
+GPGPU application은 아래와 같은 execution flow.<br>
+1. init GPU device<br>
+2. allocate device memory<br>
+3. transferring data from host memory to device memory<br>
+4. launching the computation work on GPU<br>
+5.copying results back to host memory<br>
+6. free device memory and close the device.<br>
 
 이 논문을 읽기 위해 알아야 할 단어
-Context: GPU의 가상주소공간 혹은 CUDA application을 위해 GPU 장치에 (GPU 초기화 단계에) 만들어진 공간
+Context: GPU의 가상주소공간 혹은 CUDA application을 위해 GPU 장치에 (GPU 초기화 단계에) 만들어진 공간<br>
 	CUDA는 MultiProcess Service이나, linux만 지원하고 그외에도 여러 제약 조건이 많다. (so needs more common scenario)
 
 GPU device에서
@@ -93,7 +93,7 @@ kernel, Thread, Thread block, Grid:
 block, grid의 차원은 programmer가 정할 수 있다.
 CUDA stream: CUDA가 메모리 복사의 latency를 숨기고, 서로 다른 독립적인 연산들로부터 kernel launch를 하기 위해 사용하는 기술.
 
-->effect==  concurrent kernel execution을 더 많이 할 수 있게 해줌. 각 커널들이 uner utilization 하고 있으면
+->effect==  concurrent kernel execution을 더 많이 할 수 있게 해줌. 각 커널들이 under utilization 하고 있으면
 여러개의 커널이 하나의 GPU에서 동시에 수행되게끔 만들어줌.
 
 2-ii. DNN model
@@ -124,9 +124,9 @@ and this measurement shows us Fig2.
 graph shows staged patteren.after convolutioning.(in terms of big sight)
 and final layers shows small input data and light computation -> under utilization of gpu.
 
-dnn generates more fine grained(gyeol e gopda)feature maps at early layers.
-and prunes(gajichida) details gradually -> depth increase to get a higher abstraction
-(chu sang hwa -> more fater processing) (find simple features.)
+dnn generates more fine grained(결이고운)feature maps at early layers.
+and prunes details gradually -> depth increase to get a higher abstraction
+(추상화 -> more faster processing) (find simple features.)
 
 3-ii. Data Fusion
 batch: fetch multiple images to process them on one pass is a common optimizing method.

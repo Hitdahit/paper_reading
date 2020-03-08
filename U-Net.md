@@ -70,4 +70,32 @@
 	input tile의 size를 크게 주는 것이 더 효과적이다.
 	다만, batch size가 작아지면 학습 시간이 길어지는 가장 큰 요소가 되는데,
 	이 때 momentum값을 0.99로 하여 과거에 학습 한 값들을 더 많이 반영하게 만들어서 가속 시킨듯??
+	
+	activation -> softmax
+	loss -> cross entropy loss with w(x)
+		l(x)는 정답 레이블 k에 해당하는 값을 반환하는 함수 
+		-> cross entropy loss는 이 k값을 받아서 정답의 추정 값에 log를 씌운 형태.
+		-> 그러나 unet은 여기에 w(x)를 곱한 값을 loss로 사용한다/
+		w(x)-> 수학을 배제하고 직관적으로 생각하면, 각 object 사이에 존재하는 픽셀 x에 대하여,
+		 object 간 거리가 멀어질 수록 weight(w)가 작아지는 메커니즘으로 이해.
+	네트워크 초기화 - He initialization
+
+	 data augmentation: 3by3 elastic transform matrix사용
+		세포 세그멘테이션에서 유효한 작용을 하는 요소!(elastic deformation이 굉장히 유효..)
+		이건 태스크에 따라 갈릴 수 있겠다.
+	
+4. experiments
+	EM segmentation challenge에서 warping error sota.
+	IOU로도 92%/77.5%로 sota
+
+5. conclusion
+	annotated image가 없는 상태에서 biomedical segmentation application에서 Unet이 좋은 성능을
+	가질 수 있었던 이유는 Elastic 변환을 적용한 data augmentation 이었다.
+	학습 시간- NVIDIA Titan GPU 6GB사용시 10시간.
+	Unet 아키텍쳐는 다양한 테스크에서 사용이 가능 할 것으로 보임.
+	
+	**** Unet은 Fully Convolution과 Deconvolution의 구조로 된 U자형 아키텍쳐를 가지고 있으며,
+	Localization의 성능을 높이기 위하여 Contracting Path의 Feature를 Expanding path에 concat하여 사용!
+			
+
 
